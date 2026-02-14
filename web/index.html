@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroScan AI | Advanced Diagnostics</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Import ONNX Runtime Web -->
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Import jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Background Animation -->
+        <div class="neural-bg"></div>
+        <div class="grid-overlay"></div>
+
+        <header class="glass-header">
+            <div class="brand">
+                <i data-lucide="brain-circuit" class="brand-icon"></i>
+                <div class="brand-text">
+                    <h1>NEUROSCAN AI</h1>
+                    <p class="system-status">SYSTEM ONLINE // v3.0.1</p>
+                </div>
+            </div>
+            <div class="header-controls">
+                <button id="reset-btn" class="icon-btn" title="Reset System">
+                    <i data-lucide="refresh-cw"></i>
+                </button>
+            </div>
+        </header>
+
+        <main class="dashboard-grid">
+            <!-- Left Panel: Input & Preview -->
+            <section class="panel glass-panel scan-panel">
+                <div class="panel-header">
+                    <h2><i data-lucide="scan-line"></i> IMAGING SOURCE</h2>
+                </div>
+
+                <div class="scan-container">
+                    <div class="upload-zone" id="drop-zone">
+                        <input type="file" id="file-input" accept="image/*" hidden>
+                        <div class="upload-content">
+                            <div class="scanner-ring"></div>
+                            <i data-lucide="upload-cloud" class="upload-icon-large"></i>
+                            <h3>INITIATE SCAN</h3>
+                            <p>DROP MRI DATA SEQUENCE OR CLICK TO BROWSE</p>
+                        </div>
+                    </div>
+
+                    <div class="preview-stage hidden" id="preview-container">
+                        <div class="image-wrapper">
+                            <img id="preview-image" alt="Scan Input">
+                            <div class="scanner-bar"></div>
+                            <div class="scan-overlay-grid"></div>
+                        </div>
+
+                        <div class="scan-metrics">
+                            <div class="metric">
+                                <span class="label">RES:</span>
+                                <span class="value">224x224 PX</span>
+                            </div>
+                            <div class="metric">
+                                <span class="label">TYPE:</span>
+                                <span class="value">MRI-T1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Panel: Analysis HUD -->
+            <section class="panel glass-panel results-panel hidden" id="results-section">
+                <div class="panel-header">
+                    <h2><i data-lucide="activity"></i> DIAGNOSTIC ANALYSIS</h2>
+                    <div class="status-indicator">
+                        <span class="status-dot"></span> PROCESSING COMPLETE
+                    </div>
+                </div>
+
+                <div class="results-content">
+                    <!-- Model Badge -->
+                    <div class="system-badge">
+                        <span class="badge-icon">AI</span>
+                        <span class="badge-text">Inference Engine Active</span>
+                    </div>
+
+                    <!-- Primary Top Result -->
+                    <div class="primary-result-card">
+                        <div class="confidence-ring-container">
+                            <svg class="progress-ring" width="120" height="120">
+                                <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.1)" stroke-width="8"
+                                    fill="transparent" r="52" cx="60" cy="60" />
+                                <circle class="progress-ring__circle" stroke="var(--accent-color)" stroke-width="8"
+                                    fill="transparent" r="52" cx="60" cy="60" />
+                            </svg>
+                            <div class="confidence-value">0%</div>
+                        </div>
+                        <div class="diagnosis-info">
+                            <span class="label-small">PRIMARY DETECTION</span>
+                            <h1 id="top-prediction-label">--</h1>
+                            <p class="confidence-sub">CONFIDENCE LEVEL</p>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Probabilities List -->
+                    <div class="data-grid" id="predictions-container">
+                        <!-- Injected via JS -->
+                    </div>
+
+                    <!-- Medical Context / Typing Effect -->
+                    <div class="terminal-box">
+                        <div class="terminal-header">
+                            <span>>> CLINICAL_CONTEXT.LOG</span>
+                        </div>
+                        <div class="terminal-content" id="description-text">
+                            AWAITING DATA...
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons (Pinned to Bottom) -->
+                <div class="panel-footer">
+                    <button class="btn-primary" id="download-btn">
+                        <i data-lucide="file-down"></i> EXPORT REPORT_PDF
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p><strong>CAUTION:</strong> INVESTIGATIONAL DEVICE. NOT FOR CLINICAL DIAGNOSIS. VERIFY WITH MEDICAL
+                PROFESSIONAL.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

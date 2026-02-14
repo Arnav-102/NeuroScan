@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Model files (points to large files)
+*.pth
+*.onnx
+
+# Data
+# data/ # Commented out as data dir is small, but good to be aware
+
+# Virtual Environment
+venv/
+env/
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Agent
+.gemini/
