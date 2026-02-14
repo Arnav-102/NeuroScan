@@ -9,6 +9,23 @@ An AI-powered diagnostic tool capable of detecting brain tumors from MRI scans w
 - **Privacy-First**: Model runs entirely in the browser using ONNX Runtime (no data uploaded to server).
 - **Interactive UI**: Professional, medical-grade web interface.
 
+## 🛠️ Tech Stack
+
+### Core AI & Machine Learning
+- **PyTorch**: Used for building and training the deep learning model.
+- **ResNet18**: A powerful Convolutional Neural Network (CNN) architecture used for image classification.
+- **Transfer Learning**: Fine-tuned a pre-trained ResNet18 model on Brain Tumor MRI data.
+- **ONNX (Open Neural Network Exchange)**: Converted the PyTorch model to ONNX format for browser compatibility.
+
+### Web Frontend
+- **ONNX Runtime Web**: Runs the AI model directly in the user's browser (Client-side inference).
+- **Vanilla JavaScript**: Handles logic, image processing, and UI interactions without heavy frameworks.
+- **HTML5 & CSS3**: Custom-designed responsive interface with modern glassmorphism aesthetics.
+
+### Deployment & Tools
+- **GitHub Pages**: Hosted the static web application for free.
+- **Git**: Version control for tracking changes and collaboration.
+
 ## 📂 Project Structure
 ```
 brain_tumor_detection/
