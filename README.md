@@ -1,5 +1,7 @@
 # Brain Tumor Detection AI 🧠
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Launch%20App-success?style=for-the-badge&logo=github)](https://Arnav-102.github.io/NeuroScan/web/)
+
 An AI-powered diagnostic tool capable of detecting brain tumors from MRI scans with high precision. This project uses a **ResNet18** deep learning model trained on over 10,000 images (via augmentation) and features a client-side web interface for instant analysis.
 
 ## 🌟 Features
